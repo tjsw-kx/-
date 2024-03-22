@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" type="text/css"
+	href="/layuiMall/res/static/css/main.css">
+<link rel="stylesheet" type="text/css"
+	href="/layuiMall/res/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<script type="text/javascript" src="/layuiMall/res/layui/layui.js"></script>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+</head>
+<body id="list-cont">
+	<div class="header">
+		<div class="headerLayout w1200">
+			<div class="headerCon">
+
+				<div class="mallSearch">
+					<form action="" class="layui-form" novalidate>
+						<input type="text" id="name" name="title" required
+							lay-verify="required" autocomplete="off" class="layui-input"
+							placeholder="请输入需要的商品">
+						<button class="layui-btn" type="button" lay-submit
+							lay-filter="formDemo" onclick="search()">
+							<i class="layui-icon layui-icon-search"></i>
+						</button>
+						<input type="hidden" name="" value="">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="content">
+		<div class="main-nav">
+			<div class="inner-cont0">
+				<div class="inner-cont1 w1200">
+					<div class="inner-cont2">
+						<a href="#" id="allShop" class="types active" typeid=""
+							onclick="typeChange(this)">所有商品</a> <a href="#" class="types"
+							th:each="obj : ${types}" th:text="${obj.name}"
+							onclick="typeChange(this)" th:attr="typeid=${obj.id}">今日团购</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="floors">
+			<div class="sk">
+				<div class="sk_inner w1200">
+					<div class="sk_hd">
+						<a href="javascript:;"> <img
+							src="/layuiMall/res/static/img/s_img1.jpg">
+						</a>
+					</div>
+					<div class="sk_bd">
+						<div class="layui-carousel" id="test1">
+							<div carousel-item>
+								<div class="item-box" th:each="hot : ${hots}">
+									<div class="item" onclick="shopInfo(this)"
+										th:attr="name=${obj.name},oid=${obj.id}"
+										th:each="obj : ${hot}">
+										<a href="javascript:;"><img th:src="${obj.cover}"></a>
+										<div class="title" th:text="${obj.name}"></div>
+										<div class="price">
+											<span th:text="${obj.discountPrice}">￥49.00</span>
+											<del th:text="${obj.price}">￥99.00</del>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="product-list-box" id="product-list-box">
+			<div class="product-list-cont w1200">
+				<h4>商品列表</h4>
+				<div class="product-item-box layui-clear">
+					<div onclick="shopInfo(this)"
+						th:class="'list-item shopList shops A' + ${obj.typeId}"
+						th:attr="name=${obj.name},oid=${obj.id}" th:each="obj : ${shops}"
+						style="height: 350px;">
+						<a href="javascript:;"><img th:src="${obj.cover}"
+							width="171px" height="171px"></a>
+						<p th:text="${obj.name}"></p>
+						<span th:text="${obj.discountPrice}">￥49.00</span>
+						<del th:text="${obj.price}"></del>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="product-list-box" id="product-list-box">
+			<div class="product-list-cont w1200">
+				<h4>推荐列表</h4>
+				<div class="product-item-box layui-clear" th:if="${#lists.isEmpty(rejList)}">
+					<span>暂无推荐，请去购买吧</span>
+				</div>
+				
+				<div class="product-item-box layui-clear">
+					<div onclick="shopInfo(this)" th:if="${not #lists.isEmpty(rejList)}"
+						th:class="'list-item shopList shops A' + ${obj.typeId}"
+						th:attr="name=${obj.name},oid=${obj.id}" th:each="obj : ${rejList}"
+						style="height: 350px;">
+						<a href="javascript:;"><img th:src="${obj.cover}"
+							width="171px" height="171px"></a>
+						<p th:text="${obj.name}"></p>
+						<span th:text="${obj.discountPrice}">￥49.00</span>
+						<del th:text="${obj.price}"></del>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="product-list-box" id="product-list-box">
+			<div class="product-list-cont w1200">
+				<h4>新闻列表</h4>
+				<div role="tabpanel" class="tab-pane contact active" id="notice">
+					<table class="table">
+						<thead>
+							<tr>
+								<th style="text-align: center;">标题</th>
+								<th style="text-align: center;">发布时间</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="user : ${xinwenList}">
+								<td th:text="${user.name}" th:attr="name=${user.name},oid=${user.id}" th:onclick="|getName(this,'${user.id}')|">Tanmay</td>
+								<td th:text="${#dates.format(user.time,'yyyy-MM-dd HH:mm:ss')}">Bangalore</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer">
+
+		<div class="mod_help w1200">
+
+			<p class="coty">版权所有-数码电商平台</p>
+		</div>
+	</div>
+	<script src="/js/jquery.min.js?v=2.1.4"></script>
+	<script src="/layer/layer.js"></script>
+	<script src="/base.js"></script>
+	<script type="text/javascript">
+    layui.config({
+        base: '/layuiMall/res/static/js/util/' //你存放新模块的目录，注意，不是layui的模块目录
+    }).use(['mm','carousel'],function(){
+        var carousel = layui.carousel,
+            mm = layui.mm;
+        var option = {
+            elem: '#test1'
+            ,width: '100%' //设置容器宽度
+            ,arrow: 'always'
+            ,height:'298'
+            ,indicator:'none'
+        }
+        carousel.render(option);
+    });
+    function typeChange(b) {
+        $("#name").val("");
+        var typeid = $(b).attr("typeid");
+        $(".types").removeClass("active");
+        $(b).addClass("active");
+        if(typeid==""){
+            $(".shops").show();
+        }else{
+            $(".shops").hide();
+            $(".A"+typeid).show();
+        }
+    }
+    function search() {
+        var name = $("#name").val();
+        var shopList = $(".shopList");
+        for (let i = 0; i <shopList.length ; i++) {
+            var kname = shopList.eq(i).attr("name");
+            if(kname.indexOf(name)<=-1){
+                shopList.eq(i).hide();
+            }
+        }
+    }
+    
+    function shopInfo(b) {
+        location.href="/mobileShop/info.html?id="+$(b).attr("oid")
+    }
+    
+    function getName(id){
+    	var id = $(id).attr("oid");
+    	location.href="/mobileShop/xinwenDetail.html?id="+id
+    }
+</script>
+</body>
+</html>

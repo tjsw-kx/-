@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <link href="/jqueryfresh/css/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="/jqueryfresh/css/goods-details.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="near-box">
+    <div class="gdetails-header">
+        <a href="/mobile/index.html" class="gdetails-hleft"></a>
+        <div class="gdetails-htbox">
+            商品详情
+        </div>
+    </div>
+    <div class="gdetails-bigbox">
+        <!--轮播部分-->
+        <div id="slideBox" class="slideBox">
+            <div class="bd">
+                <img th:src="${shop.cover}" style="height: 300px;width: 100%;"/>
+            </div>
+        </div>
+        <!--轮播部分-->
+        <!--商品价格部分-->
+        <div class="gdetails-price">
+            <div class="gdetails-price-box1">
+                <span class="gdetails-price-text1" th:text="${shop.discountPrice}"></span>
+                <span class="gdetails-price-text2">原价￥<span  th:text="${shop.price}"></span></span>
+            </div>
+            <div class="gdetails-price-box1">
+                <div class="gdetails-price-text5" th:text="${shop.summery}">后套盒，帪享系列超补水收缩毛孔,补水，让你变成婴儿肌！</div>
+            </div>
+        </div>
+        <!--商品价格部分-->
+        <!--分享弹层部分-->
+        <!--弹层背景部分-->
+        <div class="gdetails-layer-bg" style="display: none;"></div>
+        <!--分享弹层部分-->
+        <!--图文详情部分-->
+        <div class="recommend-box1">商品详情</div>
+        <div class="recommend-box2">
+            <span class="recommend-box2-text1"><i>评分： </i> <span th:text="${shop.score}"></span> </span>
+            <span class="recommend-box2-text1"><i>库存： </i> <span th:text="${shop.stock}"></span></span>
+        </div>
+
+        <div class="recommend-box1">客户评价</div>
+        <div class="recommend-box2">
+            <div th:each="shop : ${list}">
+                <div class="classify-right content2" style="margin-top: 5px;">
+                    <div style="width: 20%;float: left">
+                        <img th:src="${shop.header}" style="width: 50px;height: 50px;" alt="">
+                    </div>
+                    <div style="width: 80%;float: left">
+                        <p><span style="color: #1E9FFF;" th:text="${shop.cname}">客户名称</span>
+                            <span th:if="${shop.score==5}">★★★★★</span>
+                            <span th:if="${shop.score==4}">★★★★</span>
+                            <span th:if="${shop.score==3}">★★★</span>
+                            <span th:if="${shop.score==2}">★★</span>
+                            <span th:if="${shop.score==1}">★</span>
+                        </p>
+                        <p th:text="${shop.content}" style="font-size: 14px;"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="recommend-box1">图文详情</div>
+        <div class="image-text-xq-img" th:utext="${shop.content}" style="background-color: white;padding: 10px;">
+
+
+        </div>
+        <!--图文详情部分-->
+    </div>
+    <!--加入购物车部分-->
+    <div class="goods-details-bottom">
+        <div class="gd-collect">
+            <a href="/mobile/index.html">
+                <span class="gd-collect-img1"></span>
+                <span class="gd-collect-text1">首页</span>
+            </a>
+        </div>
+        <a class="gd-collect">
+            <span class="gd-collect-img1 img2"><i class="add-num">0</i></span>
+            <span class="gd-collect-text1" onclick="gat()">购物车</span>
+        </a>
+        <div class="gd-collect-sx"></div>
+        <button class="gd-collect-btn1 addcar" onclick="addGat(this)" th:attr="shopid=${shop.id}">加入购物车</button>
+        <button class="gd-collect-btn1 btn2"  onclick="gat()">立即购买</button>
+    </div>
+
+</div>
+<script src="/jqueryfresh/js/TouchSlide.1.1.js"></script>
+<script src="/jqueryfresh/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/jqueryfresh/js/ydui.citys.js"></script>
+<script type="text/javascript" src="/jqueryfresh/js/ydui.js"></script>
+<script src="/jqueryfresh/js/goods-details.js"></script>
+<script src="/layer/layer.js"></script>
+<script src="/base.js"></script>
+<script>
+    /**
+     *
+     * @param shopId
+     */
+    function addGat(b) {
+        var shopId = $(b).attr("shopid");
+        basePost({
+            url:"/shoppingGat/add.do",
+            data:{
+                shopId:shopId,
+                num:1
+            },
+            success:function (req) {
+               layer.msg("加入购物车成功");
+            }
+        })
+    }
+    
+    function gat() {
+        location.href = "/shoppingGat/list.do"
+    }
+</script>
+</body>
+</html>

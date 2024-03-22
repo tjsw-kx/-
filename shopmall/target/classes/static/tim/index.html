@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+	<title>互助聊天</title>
+	<link rel="stylesheet" type="text/css" href="./css/qq.css"/>
+</head>
+<body>
+<div class="qqBox" id="app">
+	<div style="display: none;" ><input type="file" v-on:change="fileUpload" id="fileUploadImg" accept=".png,.jpg,.gif" ></div>
+	<div style="display: none;" ><input type="file" v-on:change="fileUploadVedio" id="fileUploadVedio" accept=".mp4" ></div>
+	<div class="BoxHead">
+		<div class="headImg" style="margin-top: 3px;">
+			<img src="./img/em_12.jpg"/>
+		</div>
+		<div class="internetName">咨询者</div>
+	</div>
+	<div class="conRight">
+		<div class="Righthead">
+			<div class="headName">
+				<span>在线客服</span>
+			</div>
+		</div>
+		<div class="RightCont" >
+			<ul class="newsList">
+				<li class="myLi" v-for="msg in list">
+					<!-- 本人发送-->
+					<div v-show="msg.br">
+						<!-- 文字发送-->
+						<div v-show="msg.contentType==1">
+							<div class="nesHead"><img src="./img/em_12.jpg"></div>
+							<div class="news myspan">
+								<img class="jiao" src="./img/talk.jpg">
+								<span>{{msg.content}}</span>
+							</div>
+						</div>
+						<!-- 图片发送-->
+						<div v-show="msg.contentType==2">
+							<div class="nesHead"><img src="./img/em_12.jpg"></div>
+							<div class="news myImg">
+								<img class="jiao" src="./img/talk.jpg">
+								<img v-bind:src="msg.content" alt="">
+							</div>
+						</div>
+						<!-- 视频发送-->
+						<div v-show="msg.contentType==3">
+							<div class="nesHead"><img src="./img/em_12.jpg"></div>
+							<div class="news myVideo">
+								<img class="jiao" src="./img/talk.jpg">
+								<video v-bind:src="msg.content" controls></video>
+							</div>
+						</div>
+					</div>
+					<!-- 他人发送-->
+					<div v-show="msg.br == false">
+						<!-- 文字发送-->
+						<div v-show="msg.contentType==1">
+							<div class="answerHead"><img src="./img/蓝色头1.png"></div>
+							<div class="answers myspan">
+								<img class="jiao" src="./img/TIM图片20170926103645_03_02.jpg">
+								<span>{{msg.content}}</span>
+							</div>
+						</div>
+						<!-- 图片发送-->
+						<div v-show="msg.contentType==2">
+							<div class="answerHead"><img src="./img/蓝色头1.png"></div>
+							<div class="answers myImg">
+								<img class="jiao" src="./img/TIM图片20170926103645_03_02.jpg">
+								<img v-bind:src="msg.content" alt="">
+							</div>
+						</div>
+						<!-- 视频发送-->
+						<div v-show="msg.contentType==3">
+							<div class="answerHead"><img src="./img/蓝色头1.png"></div>
+							<div class="answers myVideo">
+								<img class="jiao" src="./img/TIM图片20170926103645_03_02.jpg">
+								<video v-bind:src="msg.content" controls></video>
+							</div>
+						</div>
+					</div>
+
+				</li>
+
+			</ul>
+		</div>
+		<div class="RightFoot">
+			<div class="emjon">
+				<ul>
+					<li v-on:click="sendEmoj"><img src="./img/1.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/2.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/3.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/4.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/5.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/6.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/7.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/8.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/9.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/10.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/11.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/12.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/13.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/14.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/15.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/16.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/17.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/18.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/19.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/20.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/21.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/22.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/23.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/24.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/25.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/26.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/27.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/28.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/29.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/30.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/31.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/32.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/33.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/34.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/35.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/36.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/37.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/38.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/39.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/40.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/41.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/42.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/43.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/44.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/45.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/46.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/47.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/48.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/49.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/50.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/51.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/52.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/53.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/54.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/55.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/56.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/57.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/58.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/59.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/60.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/50.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/51.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/52.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/53.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/54.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/55.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/56.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/57.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/58.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/59.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/60.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/61.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/62.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/63.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/64.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/65.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/66.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/67.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/68.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/69.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/70.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/71.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/72.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/73.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/74.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/75.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/76.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/77.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/78.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/79.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/80.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/81.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/82.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/83.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/84.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/85.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/86.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/87.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/88.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/89.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/90.gif"/></li>
+					<li v-on:click="sendEmoj"><img src="./img/91.gif"/></li>
+				</ul>
+			</div>
+			<div class="footTop">
+				<ul>
+					<li class="ExP" v-on:click="showImg"><img src="./img/TIM图片20170926103645_33.jpg"/></li>
+					<li v-on:click="sendImg"><img src="./img/TIM图片20170926103645_41.jpg" alt="" /></li>
+					<li v-on:click="sendVedio"><img src="./img/TIM图片20170926103645_43.jpg"/></li>
+				</ul>
+			</div>
+			<div class="inputBox">
+				<textarea id="dope" style="width: 99%;height: 75px; border: none;outline: none;" name="" rows="" cols=""></textarea>
+				<button v-on:click="sendMsg"  class="sendBtn">发送信息</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script src="/common/jquery-2.2.4.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script src="/common/base.js"></script>
+<script src="/common/vue.js"></script>
+<script src="./js/chat.js"></script>
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            userid:localStorage.getItem("customer_login_key_auth"),
+            url: sessionStorage.getItem("url"),
+            list:[],
+
+        },
+        mounted:function(){
+            var _this = this;
+            _this.init();
+        },
+        methods:{
+            showImg:function(event){
+                if($('.emjon').css('display')=='none'){
+                    $('.emjon').show();
+                }else{
+                    $('.emjon').hide();
+                }
+            },
+            sendEmoj:function(event){
+                var el = event.currentTarget;
+                var _this = this;
+                var imgSrc=$(el).children('img').attr('src');
+                basePost({
+                    url:"/chatRoom/addContent.do",
+                    data:{
+                        helpId:_this.helpId,
+                        assistUserId:_this.assistUserId,
+                        content: imgSrc,
+                        contentType: 2,
+                        read :false,
+                        sendUser : _this.userid,
+                    },
+                    success:function (data) {
+                        _this.init();
+                        $('.emjon').hide();
+                        $('.RightCont').scrollTop($('.RightCont')[0].scrollHeight);
+                    }
+                })
+            },
+            sendImg:function(event){
+                $("#fileUploadImg").click();
+            },
+            sendVedio:function(event){
+                $("#fileUploadVedio").click();
+            },
+            sendMsg:function () {
+                if($("#dope").val()!=""){
+                    var _this = this;
+                    basePost({
+                        url:"/chatRoom/addContent.do",
+                        data:{
+                            helpId:_this.helpId,
+                            assistUserId:_this.assistUserId,
+                            content: $("#dope").val(),
+                            contentType: 1,
+                            read :false,
+                            sendUser : _this.userid,
+                        },
+                        success:function (data) {
+                            $("#dope").val("");
+                            _this.init();
+                        }
+                    })
+                }
+            },
+            fileUpload:function (event) {
+                var _this = this;
+                // 上传文件
+                let file = event.target.files
+                let formData = new FormData()
+                formData.append('category', 'settingPic')
+                formData.append('file', file[0])
+                var loading = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: base_url + '/file/upload',
+                    data: formData,
+                    processData: false, //因为data值是FormData对象，不需要对数据做处理。
+                    contentType: false,
+                    type: "POST",
+                    success: function(data) {
+                        layer.close(loading);
+                        basePost({
+                            url:"/chatRoom/addContent.do",
+                            data:{
+                                helpId:_this.helpId,
+                                assistUserId:_this.assistUserId,
+                                content: data.data,
+                                contentType: 2,
+                                read :false,
+                                sendUser : _this.userid,
+                            },
+                            success:function (data) {
+                                _this.init();
+                            }
+                        })
+                    }
+                });
+            },
+            fileUploadVedio:function (event) {
+                var _this = this;
+                // 上传文件
+                let file = event.target.files
+                let formData = new FormData()
+                formData.append('category', 'settingPic')
+                formData.append('file', file[0]);
+                var loading = layer.load(1, {
+                    shade: [0.1,'#fff'] //0.1透明度的白色背景
+                });
+                $.ajax({
+                    url: base_url + '/file/upload',
+                    data: formData,
+                    processData: false, //因为data值是FormData对象，不需要对数据做处理。
+                    contentType: false,
+                    type: "POST",
+                    success: function(data) {
+                        layer.close(loading);
+                        basePost({
+                            url:"/chatRoom/addContent.do",
+                            data:{
+                                helpId:_this.helpId,
+                                assistUserId:_this.assistUserId,
+                                content: data.data,
+                                contentType: 3,
+                                read :false,
+                                sendUser : _this.userid,
+                            },
+                            success:function (data) {
+                                _this.init();
+                            }
+                        })
+                    }
+                });
+            },
+            init(){
+                var _this = this;
+                basePost({
+                    url:"/chatRoom/list.do",
+                    data:{
+                        helpId:_this.helpId,
+                        assistUserId:_this.assistUserId,
+                    },
+                    success:function (data) {
+                        console.log(data);
+                        var soc = false;
+                        if(data!=null){
+                            soc = true;
+                        }
+                        _this.list = data;
+                        if(soc){
+                            setTimeout(()=>{
+                                $('.RightCont').scrollTop($('.RightCont')[0].scrollHeight + 1000) ;
+                            },300)
+                        }
+                    }
+                })
+            }
+        }
+    });
+    var setTime = setInterval(function () {
+        app.init();
+    }, 100); //1000毫秒为1秒
+    var layer;
+    layui.config({
+        base: '/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'layer'], function(){
+        layer = layui.layer;
+    });
+
+    function payCall() {
+        layer.closeAll();
+        layer.alert("感谢您的打赏");
+    }
+</script>
+</body>
+</html>
+

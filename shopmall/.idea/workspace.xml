@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="062d0b71-8fb0-413a-a4e7-b75a6d5ab7a6" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="21RE4X94SXipi24UAes8w9EM6cC" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../zl/基于SSM的英文网上商城/源码/YoumiMall" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\2024他们给的项目\jjh\基于Java的宠物店网站系统的设计与实现\源码\pets\src\main\resources\static" />
+      <recent name="G:\2024他们给的项目\jjh\基于Java的宠物店网站系统的设计与实现\源码\pets\src\main\java\com\graduation\table" />
+      <recent name="G:\2024他们给的项目\jjh\基于Java的宠物店网站系统的设计与实现\源码\pets\src\main\java\com\graduation\service\impl" />
+      <recent name="G:\2024他们给的项目\jjh\基于Java的宠物店网站系统的设计与实现\源码\pets\src\main\java\com\graduation\service" />
+      <recent name="G:\2024他们给的项目\jjh\基于Java的宠物店网站系统的设计与实现\源码\pets\src\main\java\com\graduation\model" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="PetsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="pets" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.graduation.PetsApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="062d0b71-8fb0-413a-a4e7-b75a6d5ab7a6" name="Default Changelist" comment="" />
+      <created>1637895309258</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637895309258</updated>
+      <workItem from="1637895312609" duration="11849000" />
+      <workItem from="1638253836504" duration="592000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
